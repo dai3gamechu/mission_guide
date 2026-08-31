@@ -224,7 +224,18 @@ tbody tr:hover {
 }
 
 .category-col {
-  width: 170px;
+  width: 220px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.tag {
+  flex-shrink: 0;
 }
 
 
