@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ミッション一覧表</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <h1>ミッション一覧表</h1>
+      <p>ランクや条件を切り替えて、ミッションとおすすめ度を確認できます。</p>
+    </section>
+
+    <section class="panel controls">
+      <div class="control-group">
+        <div class="control-label">ランク</div>
+        <div class="segmented" id="rankButtons">
+          <button class="filter-btn active" data-rank="topFighter">トップファイター</button>
+          <button class="filter-btn" data-rank="superAce">スーパーエース</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">ミッション種別</div>
+        <div class="segmented" id="missionTypeButtons">
+          <button class="filter-btn active" data-type="public">公共</button>
+          <button class="filter-btn" data-type="personal">個人</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">最高解放Tier</div>
+        <div class="segmented" id="tierButtons">
+          <button class="filter-btn" data-tier="t4">T4</button>
+          <button class="filter-btn" data-tier="t5">T5</button>
+          <button class="filter-btn active" data-tier="t6">T6</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">レアリティ</div>
+        <div class="chip-list" id="rarityButtons">
+          <button class="chip active" data-rarity="all">すべて</button>
+          <button class="chip" data-rarity="アンコモン">アンコモン</button>
+          <button class="chip" data-rarity="エリート">エリート</button>
+          <button class="chip" data-rarity="レジェンド">レジェンド</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">カテゴリ</div>
+        <div class="chip-list" id="categoryButtons">
+          <button class="chip active" data-category="all">すべて</button>
+          <button class="chip" data-category="課金">課金</button>
+          <button class="chip" data-category="アイテム消費">アイテム消費</button>
+          <button class="chip" data-category="スタミナ">スタミナ</button>
+          <button class="chip" data-category="戦闘">戦闘</button>
+          <button class="chip" data-category="訓練">訓練</button>
+          <button class="chip" data-category="建築・研究">建築・研究</button>
+          <button class="chip" data-category="装備・乗り物系">装備・乗り物系</button>
+          <button class="chip" data-category="採取">採取</button>
+          <button class="chip" data-category="同盟">同盟</button>
+          <button class="chip" data-category="その他">その他</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">おすすめ度</div>
+        <div class="chip-list" id="recommendButtons">
+          <button class="chip active" data-recommend="all">すべて</button>
+          <button class="chip" data-recommend="3">★★★</button>
+          <button class="chip" data-recommend="2plus">★★以上</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="keyword">キーワード検索</label>
+        <input id="keyword" class="search-input" type="search" placeholder="例：スタミナ、兵士、採取">
+      </div>
+    </section>
+
+    <section class="legend">
+      <strong>おすすめ度</strong>
+      <span>★★★：積極的におすすめ</span>
+      <span>★★☆：状況次第でおすすめ</span>
+      <span>★☆☆：優先度低め</span>
+    </section>
+    
+    <section class="summary-row">
+      <div id="currentConditions"></div>
+      <div id="resultCount"></div>
+    </section>
+
+    <section id="notice" class="notice hidden"></section>
+
+    <section class="panel table-panel">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="recommend-col">おすすめ</th>
+              <th class="mission-col">ミッション内容</th>
+              <th class="point-col">Pt</th>
+              <th class="rarity-col">レアリティ</th>
+              <th class="category-col">カテゴリ</th>
+            </tr>
+          </thead>
+
+          <tbody id="missionTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
