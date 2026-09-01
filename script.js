@@ -322,6 +322,14 @@ const missionData = {
     },
     {
       rarity: "アンコモン",
+      mission: "鋼材掘り4,915,000個収集",
+      publicPoint: 70,
+      personalPoint: null,
+      categories: ["採取"],
+      recommend: { t6: 1, t5: 1, t4: 1 }
+    },
+    {
+      rarity: "アンコモン",
       mission: "鋼材掘り9,150,000個収集",
       publicPoint: 125,
       personalPoint: null,
