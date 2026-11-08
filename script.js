@@ -1,1647 +1,1496 @@
-const missionData = {
-  topFighter: [
-    {
-      rarity: "エリート",
-      mission: "500ポイント以上のパックを3回購入",
-      publicPoint: 345,
-      personalPoint: 415,
-      categories: ["課金"],
-      recommend: { t6: 2, t5: 2, t4: 2 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "500ポイント以上のパックを5回購入",
-      publicPoint: 515,
-      personalPoint: 1030,
-      categories: ["課金"],
-      recommend: { t6: 2, t5: 2, t4: 2 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "1000ポイント以上のパックを4回購入",
-      publicPoint: 685,
-      personalPoint: 1370,
-      categories: ["課金"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "2000ポイント以上のパックを2回購入",
-      publicPoint: 740,
-      personalPoint: 1480,
-      categories: ["課金"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "ジェムを10,000個消費",
-      publicPoint: 325,
-      personalPoint: 390,
-      categories: ["アイテム消費"],
-      recommend: { t6: 2, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "ジェムを50,000個消費",
-      publicPoint: 490,
-      personalPoint: 980,
-      categories: ["アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "スタミナを6000消費",
-      publicPoint: 110,
-      personalPoint: null,
-      categories: ["スタミナ"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "スタミナを12000消費",
-      publicPoint: 170,
-      personalPoint: 205,
-      categories: ["スタミナ"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "レーダー基地イベント18回実施",
-      publicPoint: 135,
-      personalPoint: null,
-      categories: ["スタミナ"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "レーダー基地イベント24回実施",
-      publicPoint: 205,
-      personalPoint: 250,
-      categories: ["スタミナ"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "T4以上の兵士、29,000隊回復",
-      publicPoint: 165,
-      personalPoint: null,
-      categories: ["戦闘"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "T4以上の兵士、100,000隊回復",
-      publicPoint: 250,
-      personalPoint: 300,
-      categories: ["戦闘"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "T4以上の兵士、216,000隊回復",
-      publicPoint: 375,
-      personalPoint: 750,
-      categories: ["戦闘"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "T4以上の兵士、350,000隊倒す",
-      publicPoint: 165,
-      personalPoint: null,
-      categories: ["戦闘"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "T4以上の兵士、700,000隊倒す",
-      publicPoint: 255,
-      personalPoint: 310,
-      categories: ["戦闘"],
-      recommend: { t6: 2, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "T4以上の兵士訓練、20,000隊",
-      publicPoint: 200,
-      personalPoint: null,
-      categories: ["訓練", "アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "T4以上の兵士訓練、27,000隊",
-      publicPoint: 305,
-      personalPoint: 370,
-      categories: ["訓練", "アイテム消費"],
-      recommend: { t6: 1, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "T4以上の兵士訓練、39,000隊",
-      publicPoint: 455,
-      personalPoint: 685,
-      categories: ["訓練", "アイテム消費"],
-      recommend: { t6: 1, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "エリート",
-      mission: "スピードアップ18,000分利用",
-      publicPoint: 290,
-      personalPoint: 350,
-      categories: ["アイテム消費"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "スピードアップ39,600分利用",
-      publicPoint: 435,
-      personalPoint: 655,
-      categories: ["アイテム消費"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "エリート",
-      mission: "技術戦力を180,000上げる",
-      publicPoint: 295,
-      personalPoint: 355,
-      categories: ["建築・研究", "アイテム消費"],
-      recommend: { t6: 1, t5: 2, t4: 2 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "技術戦力を400,000上げる",
-      publicPoint: 445,
-      personalPoint: 670,
-      categories: ["建築・研究", "アイテム消費"],
-      recommend: { t6: 1, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "エリート",
-      mission: "建物戦力180,000上げる",
-      publicPoint: 295,
-      personalPoint: 355,
-      categories: ["建築・研究", "アイテム消費"],
-      recommend: { t6: 1, t5: 2, t4: 2 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "建物戦力400,000上げる",
-      publicPoint: 445,
-      personalPoint: 670,
-      categories: ["建築・研究", "アイテム消費"],
-      recommend: { t6: 1, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "司令官装備の戦力を120,000上げる",
-      publicPoint: 200,
-      personalPoint: null,
-      categories: ["装備・乗り物系", "アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "司令官装備の戦力を336,000上げる",
-      publicPoint: 305,
-      personalPoint: 370,
-      categories: ["装備・乗り物系", "アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "部隊戦力を180,000上げる",
-      publicPoint: 195,
-      personalPoint: null,
-      categories: ["訓練", "アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "部隊戦力を250,000上げる",
-      publicPoint: 295,
-      personalPoint: 355,
-      categories: ["訓練", "アイテム消費"],
-      recommend: { t6: 2, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "部隊戦力を360,000上げる",
-      publicPoint: 445,
-      personalPoint: 670,
-      categories: ["訓練", "アイテム消費"],
-      recommend: { t6: 3, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "戦力100,000増加（ヒーロー類除く）",
-      publicPoint: 180,
-      personalPoint: null,
-      categories: ["訓練", "アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "戦力250,000増加（ヒーロー類除く）",
-      publicPoint: 275,
-      personalPoint: 330,
-      categories: ["訓練", "アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "戦力600,000増加（ヒーロー類除く）",
-      publicPoint: 415,
-      personalPoint: 830,
-      categories: ["訓練", "アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "生存者キャンプ60回救出",
-      publicPoint: 215,
-      personalPoint: null,
-      categories: ["アイテム消費"],
-      recommend: { t6: 2, t5: 2, t4: 2 }
-    },
-    {
-      rarity: "エリート",
-      mission: "生存者キャンプ120回救出",
-      publicPoint: 325,
-      personalPoint: 390,
-      categories: ["アイテム消費"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "食料掘り9,830,000個収集",
-      publicPoint: 70,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "食料掘り18,300,000個収集",
-      publicPoint: 125,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "食料掘り27,400,000個収集",
-      publicPoint: 285,
-      personalPoint: 345,
-      categories: ["採取"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "木材掘り9,830,000個収集",
-      publicPoint: 70,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "木材掘り18,300,000個収集",
-      publicPoint: 125,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "木材掘り27,400,000個収集",
-      publicPoint: 285,
-      personalPoint: 345,
-      categories: ["採取"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "鋼材掘り4,915,000個収集",
-      publicPoint: 70,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "鋼材掘り9,150,000個収集",
-      publicPoint: 125,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "鋼材掘り13,700,000個収集",
-      publicPoint: 285,
-      personalPoint: 345,
-      categories: ["採取"],
-      recommend: { t6: 2, t5: 2, t4: 2 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "石油掘り1,960,000個収集",
-      publicPoint: 70,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "石油掘り3,660,000個収集",
-      publicPoint: 125,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "石油掘り5,480,000個収集",
-      publicPoint: 285,
-      personalPoint: 345,
-      categories: ["採取"],
-      recommend: { t6: 2, t5: 2, t4: 2 }
-    },
-    {
-      rarity: "エリート",
-      mission: "ワールドマップで資源回収21,000,000個",
-      publicPoint: 175,
-      personalPoint: 210,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "資源スポット7か所空にする",
-      publicPoint: 150,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "警察署高度探索100回",
-      publicPoint: 160,
-      personalPoint: null,
-      categories: ["アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "警察署普通探索200回",
-      publicPoint: 160,
-      personalPoint: null,
-      categories: ["アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "ヒーロー経験値を9,216,000使用する",
-      publicPoint: 175,
-      personalPoint: null,
-      categories: ["アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "カーボンスチール300個",
-      publicPoint: 190,
-      personalPoint: null,
-      categories: ["アイテム消費", "装備・乗り物系"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "カーボンスチール500個",
-      publicPoint: 290,
-      personalPoint: 350,
-      categories: ["アイテム消費", "装備・乗り物系"],
-      recommend: { t6: 1, t5: 2, t4: 2 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "トラック（指定なし）を3台護衛",
-      publicPoint: 170,
-      personalPoint: null,
-      categories: ["その他"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "トラック（A以上）を3台護衛",
-      publicPoint: 195,
-      personalPoint: null,
-      categories: ["その他"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "技術を7回アップグレードする",
-      publicPoint: 190,
-      personalPoint: null,
-      categories: ["建築・研究"],
-      recommend: { t6: 1, t5: 1, t4: 2 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "建物を7回アップグレードする",
-      publicPoint: 190,
-      personalPoint: null,
-      categories: ["建築・研究"],
-      recommend: { t6: 1, t5: 1, t4: 2 }
-    },
-    {
-      rarity: "エリート",
-      mission: "上級チップ35個使用",
-      publicPoint: 270,
-      personalPoint: 325,
-      categories: ["アイテム消費", "装備・乗り物系"],
-      recommend: { t6: 1, t5: 2, t4: 2 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "上級チップ105個使用",
-      publicPoint: 405,
-      personalPoint: 610,
-      categories: ["アイテム消費", "装備・乗り物系"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "通常精製300回行う",
-      publicPoint: 225,
-      personalPoint: null,
-      categories: ["装備・乗り物系", "アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "乗り物戦力を20,475上げる",
-      publicPoint: 360,
-      personalPoint: 435,
-      categories: ["装備・乗り物系"],
-      recommend: { t6: 2, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "兵装追跡を50個使用",
-      publicPoint: 200,
-      personalPoint: null,
-      categories: ["アイテム消費", "装備・乗り物系"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "盟友に資源を66,500,000個提供する",
-      publicPoint: 160,
-      personalPoint: null,
-      categories: ["同盟"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "個人ポイントを600,000消費する",
-      publicPoint: 160,
-      personalPoint: null,
-      categories: ["アイテム消費"],
-      recommend: { t6: 2, t5: 2, t4: 2 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "週末アリーナに8回挑戦する",
-      publicPoint: 160,
-      personalPoint: null,
-      categories: ["その他"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "同盟ヘルプを75回実施",
-      publicPoint: 160,
-      personalPoint: null,
-      categories: ["同盟"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "同盟技術への寄付を70回実施",
-      publicPoint: 160,
-      personalPoint: null,
-      categories: ["同盟"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "謎の商人から35個回購入",
-      publicPoint: 155,
-      personalPoint: null,
-      categories: ["その他"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
+// TC計算ツール
+
+const trainingPointValues = {
+    3: 20,
+    4: 40,
+    5: 80,
+    6: 150
+};
+
+const baseSecondsPerTier = 40000 / 2000;
+
+
+// ---------- 共通 ----------
+
+function calculateTrainingSeconds(speed, fromTier, toTier, count) {
+    const multiplier = 1 + speed / 100;
+    const tierDifference =
+        fromTier === toTier ? fromTier : toTier - fromTier;
+
+    return baseSecondsPerTier * tierDifference * count / multiplier;
+}
+
+function formatTrainingTime(seconds) {
+    seconds = Math.max(0, Math.floor(seconds));
+
+    const days = Math.floor(seconds / 86400);
+    const hours = Math.floor((seconds % 86400) / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+
+    let text = "";
+
+    if (days > 0) {
+        text += `${days}日`;
     }
-  ],
 
-
-  superAce: [
-    {
-      rarity: "エリート",
-      mission: "500ポイント以上のパックを4回購入",
-      publicPoint: 430,
-      personalPoint: 520,
-      categories: ["課金"],
-      recommend: { t6: 2, t5: 2, t4: 2 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "500ポイント以上のパックを6回購入",
-      publicPoint: 575,
-      personalPoint: 1150,
-      categories: ["課金"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "1000ポイント以上のパックを4回購入",
-      publicPoint: 685,
-      personalPoint: 1370,
-      categories: ["課金"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "2000ポイント以上のパックを2回購入",
-      publicPoint: 865,
-      personalPoint: 1730,
-      categories: ["課金"],
-      recommend: { t6: 2, t5: 2, t4: 2 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "5000ポイント以上のパックを1回購入",
-      publicPoint: 1080,
-      personalPoint: 2160,
-      categories: ["課金"],
-      recommend: { t6: 2, t5: 2, t4: 2 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "T4以上の兵士、33,000隊回復",
-      publicPoint: 215,
-      personalPoint: null,
-      categories: ["戦闘"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "T4以上の兵士、108,000隊回復",
-      publicPoint: 310,
-      personalPoint: 375,
-      categories: ["戦闘"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "T4以上の兵士、238,000隊回復",
-      publicPoint: 470,
-      personalPoint: 705,
-      categories: ["戦闘"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "T4以上の兵士、470,000隊倒す",
-      publicPoint: 215,
-      personalPoint: null,
-      categories: ["戦闘"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "T4以上の兵士、930,000隊倒す",
-      publicPoint: 315,
-      personalPoint: 380,
-      categories: ["戦闘"],
-      recommend: { t6: 2, t5: 1, t4: 1 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "T4以上の兵士訓練、22,000隊",
-      publicPoint: 260,
-      personalPoint: null,
-      categories: ["訓練", "アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "T4以上の兵士訓練、29,000隊",
-      publicPoint: 380,
-      personalPoint: 460,
-      categories: ["訓練", "アイテム消費"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "T4以上の兵士訓練、44,000隊",
-      publicPoint: 575,
-      personalPoint: 865,
-      categories: ["訓練", "アイテム消費"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "カーボンスチール525個",
-      publicPoint: 245,
-      personalPoint: null,
-      categories: ["アイテム消費", "装備・乗り物系"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "カーボンスチール875個",
-      publicPoint: 360,
-      personalPoint: 435,
-      categories: ["アイテム消費", "装備・乗り物系"],
-      recommend: { t6: 1, t5: 2, t4: 2 }
-    },
-
-    {
-      rarity: "エリート",
-      mission: "ジェムを10,000個消費",
-      publicPoint: 405,
-      personalPoint: 490,
-      categories: ["アイテム消費"],
-      recommend: { t6: 2, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "ジェムを50,000個消費",
-      publicPoint: 620,
-      personalPoint: 1240,
-      categories: ["アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "スタミナを7,200消費",
-      publicPoint: 145,
-      personalPoint: null,
-      categories: ["スタミナ"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "スタミナを14,400消費",
-      publicPoint: 210,
-      personalPoint: 255,
-      categories: ["スタミナ"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-
-    {
-      rarity: "エリート",
-      mission: "スピードアップ21,600分利用",
-      publicPoint: 360,
-      personalPoint: 435,
-      categories: ["アイテム消費"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "スピードアップ46,800分利用",
-      publicPoint: 550,
-      personalPoint: 825,
-      categories: ["アイテム消費"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "トラック（S以上）を2台護衛",
-      publicPoint: 255,
-      personalPoint: null,
-      categories: ["その他"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "トラック（指定なし）を4台護衛",
-      publicPoint: 220,
-      personalPoint: null,
-      categories: ["その他"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "ヒーロー経験値を11,520,000使用する",
-      publicPoint: 230,
-      personalPoint: null,
-      categories: ["アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "ヒーロー経験値を30,600,000使用する",
-      publicPoint: 335,
-      personalPoint: 405,
-      categories: ["アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "レーダー基地イベント23回実施",
-      publicPoint: 175,
-      personalPoint: null,
-      categories: ["スタミナ"],
-      recommend: { t6: 2, t5: 2, t4: 2 }
-    },
-    {
-      rarity: "エリート",
-      mission: "レーダー基地イベント35回実施",
-      publicPoint: 255,
-      personalPoint: 310,
-      categories: ["スタミナ"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "技術を9回アップグレードする",
-      publicPoint: 245,
-      personalPoint: null,
-      categories: ["建築・研究"],
-      recommend: { t6: 1, t5: 1, t4: 2 }
-    },
-    {
-      rarity: "エリート",
-      mission: "技術戦力を250,000上げる",
-      publicPoint: 360,
-      personalPoint: 435,
-      categories: ["建築・研究", "アイテム消費"],
-      recommend: { t6: 1, t5: 2, t4: 2 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "技術戦力を680,000上げる",
-      publicPoint: 560,
-      personalPoint: 840,
-      categories: ["建築・研究", "アイテム消費"],
-      recommend: { t6: 1, t5: 3, t4: 3 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "警察署高度探索135回",
-      publicPoint: 210,
-      personalPoint: null,
-      categories: ["アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "警察署普通探索290回",
-      publicPoint: 210,
-      personalPoint: null,
-      categories: ["アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "建物を9回アップグレードする",
-      publicPoint: 245,
-      personalPoint: null,
-      categories: ["建築・研究"],
-      recommend: { t6: 1, t5: 1, t4: 2 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "個人ポイントを600,000消費する",
-      publicPoint: 205,
-      personalPoint: null,
-      categories: ["アイテム消費"],
-      recommend: { t6: 2, t5: 2, t4: 2 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "鋼材5,150,000個収集",
-      publicPoint: 90,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "鋼材9,600,000個収集",
-      publicPoint: 160,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "鋼材15,500,000個収集",
-      publicPoint: 360,
-      personalPoint: 435,
-      categories: ["採取"],
-      recommend: { t6: 2, t5: 2, t4: 2 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "資源7,730,000個収集",
-      publicPoint: 75,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "資源14,000,000個収集",
-      publicPoint: 125,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "資源23,000,000個収集",
-      publicPoint: 220,
-      personalPoint: 265,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "食料10,300,000個収集",
-      publicPoint: 90,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "食料19,200,000個収集",
-      publicPoint: 160,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "食料31,000,000個収集",
-      publicPoint: 360,
-      personalPoint: 435,
-      categories: ["採取"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "石油2,060,000個収集",
-      publicPoint: 90,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "石油3,840,000個収集",
-      publicPoint: 160,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "石油6,200,000個収集",
-      publicPoint: 360,
-      personalPoint: 435,
-      categories: ["採取"],
-      recommend: { t6: 2, t5: 2, t4: 2 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "木材10,300,000個収集",
-      publicPoint: 90,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "木材19,200,000個収集",
-      publicPoint: 160,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "木材31,000,000個収集",
-      publicPoint: 360,
-      personalPoint: 435,
-      categories: ["採取"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "司令官装備の戦力を150,000上げる",
-      publicPoint: 260,
-      personalPoint: null,
-      categories: ["装備・乗り物系", "アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "司令官装備の戦力を480,000上げる",
-      publicPoint: 380,
-      personalPoint: 460,
-      categories: ["装備・乗り物系", "アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "資源スポット9か所空にする",
-      publicPoint: 195,
-      personalPoint: null,
-      categories: ["採取"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "週末アリーナ、ランキング20位上昇",
-      publicPoint: 205,
-      personalPoint: null,
-      categories: ["その他"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "週末アリーナに8回挑戦する",
-      publicPoint: 205,
-      personalPoint: null,
-      categories: ["その他"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-
-    {
-      rarity: "エリート",
-      mission: "乗り物戦力を31,200上げる",
-      publicPoint: 450,
-      personalPoint: 540,
-      categories: ["装備・乗り物系"],
-      recommend: { t6: 2, t5: 3, t4: 3 }
-    },
-
-    {
-      rarity: "エリート",
-      mission: "生存者キャンプ165回救出",
-      publicPoint: 405,
-      personalPoint: 490,
-      categories: ["アイテム消費"],
-      recommend: { t6: 3, t5: 3, t4: 3 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "生存者キャンプ75回救出",
-      publicPoint: 280,
-      personalPoint: null,
-      categories: ["アイテム消費"],
-      recommend: { t6: 2, t5: 2, t4: 2 }
-    },
-
-    {
-      rarity: "エリート",
-      mission: "上級精製40個使用",
-      publicPoint: 340,
-      personalPoint: 410,
-      categories: ["アイテム消費", "装備・乗り物系"],
-      recommend: { t6: 1, t5: 2, t4: 2 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "上級精製125個使用",
-      publicPoint: 515,
-      personalPoint: 775,
-      categories: ["アイテム消費", "装備・乗り物系"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "通常精製400回行う",
-      publicPoint: 295,
-      personalPoint: null,
-      categories: ["装備・乗り物系", "アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-
-    {
-      rarity: "エリート",
-      mission: "建物戦力を250,000上げる",
-      publicPoint: 370,
-      personalPoint: 445,
-      categories: ["建築・研究", "アイテム消費"],
-      recommend: { t6: 1, t5: 2, t4: 2 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "建物戦力を680,000上げる",
-      publicPoint: 560,
-      personalPoint: 840,
-      categories: ["建築・研究", "アイテム消費"],
-      recommend: { t6: 1, t5: 3, t4: 3 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "部隊戦力を360,000上げる",
-      publicPoint: 250,
-      personalPoint: null,
-      categories: ["訓練", "アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "部隊戦力を470,000上げる",
-      publicPoint: 370,
-      personalPoint: 445,
-      categories: ["訓練", "アイテム消費"],
-      recommend: { t6: 2, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "部隊戦力を720,000上げる",
-      publicPoint: 560,
-      personalPoint: 840,
-      categories: ["訓練", "アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "戦力120,000増加（ヒーロー類除く）",
-      publicPoint: 235,
-      personalPoint: null,
-      categories: ["訓練", "アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "エリート",
-      mission: "戦力300,000増加（ヒーロー類除く）",
-      publicPoint: 345,
-      personalPoint: 415,
-      categories: ["訓練", "アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "レジェンド",
-      mission: "戦力800,000増加（ヒーロー類除く）",
-      publicPoint: 520,
-      personalPoint: 780,
-      categories: ["訓練", "アイテム消費"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-
-    {
-      rarity: "アンコモン",
-      mission: "同盟ヘルプを90回実施",
-      publicPoint: 205,
-      personalPoint: null,
-      categories: ["同盟"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "同盟技術への寄付を90回実施",
-      publicPoint: 210,
-      personalPoint: null,
-      categories: ["同盟"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "謎の商人から50回購入",
-      publicPoint: 200,
-      personalPoint: null,
-      categories: ["その他"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "兵装追跡を60個使用",
-      publicPoint: 265,
-      personalPoint: null,
-      categories: ["アイテム消費", "装備・乗り物系"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
-    },
-    {
-      rarity: "アンコモン",
-      mission: "盟友に資源を92,000,000個提供する",
-      publicPoint: 205,
-      personalPoint: null,
-      categories: ["同盟"],
-      recommend: { t6: 1, t5: 1, t4: 1 }
+    if (hours > 0 || days > 0) {
+        text += `${hours}時間`;
     }
-  ]
-};
 
-
-const state = {
-  rank: "topFighter",
-  missionType: "public",
-  tier: "t6",
-  rarity: "all",
-  category: "all",
-  recommend: "all",
-  keyword: ""
-};
-
-
-const rankNames = {
-  topFighter: "トップファイター",
-  superAce: "スーパーエース"
-};
-
-
-const missionTypeNames = {
-  public: "公共",
-  personal: "個人"
-};
-
-
-function stars(level) {
-  return "★".repeat(level) + "☆".repeat(3 - level);
-}
-
-
-function getRarityClass(rarity) {
-  if (rarity === "アンコモン") {
-    return "rarity-uncommon";
-  }
-
-  if (rarity === "エリート") {
-    return "rarity-elite";
-  }
-
-  if (rarity === "レジェンド") {
-    return "rarity-legend";
-  }
-
-  return "";
-}
-
-
-function setActiveButton(containerId, selector, value) {
-  document
-    .querySelectorAll(`#${containerId} [${selector}]`)
-    .forEach(button => {
-      button.classList.toggle(
-        "active",
-        button.getAttribute(selector) === value
-      );
-    });
-}
-
-
-function matchesRecommendation(level) {
-  if (state.recommend === "all") {
-    return true;
-  }
-
-  if (state.recommend === "3") {
-    return level === 3;
-  }
-
-  if (state.recommend === "2plus") {
-    return level >= 2;
-  }
-
-  return true;
-}
-
-
-function getFilteredMissions() {
-  const source = missionData[state.rank] ?? [];
-
-  return source.filter(item => {
-    const point =
-      state.missionType === "public"
-        ? item.publicPoint
-        : item.personalPoint;
-
-    /*
-      個人ポイントが存在しないミッションは、
-      個人ミッション選択時には非表示
-    */
-    if (point === null || point === undefined) {
-      return false;
+    if (minutes > 0 || hours > 0 || days > 0) {
+        text += `${minutes}分`;
     }
+
+    text += `${secs}秒`;
+
+    return text;
+}
+
+function spearMinutes(seconds) {
+    return Math.ceil(seconds / 60);
+}
+
+function formatPoint(value) {
+    return Math.floor(value).toLocaleString() + " Pt";
+}
+
+function formatPeople(value) {
+    return Math.ceil(value).toLocaleString() + "人";
+}
+
+
+// ---------- 通常計算 ----------
+
+function calculateNormal() {
+
+    const speed =
+        Number(document.getElementById("training-speed").value);
+
+    const type =
+        document.getElementById("training-type").value;
+
+    const count =
+        Number(document.getElementById("soldier-count").value);
+
+    const [fromTier, toTier] =
+        type.split("-").map(Number);
+
+
+    const seconds =
+        calculateTrainingSeconds(
+            speed,
+            fromTier,
+            toTier,
+            count
+        );
+
+
+    document.getElementById("training-time").textContent =
+        formatTrainingTime(seconds);
+
+
+    const minutes =
+        spearMinutes(seconds);
+
+
+    document.getElementById("spear-point-day1").textContent =
+        formatPoint(minutes * 250);
+
+
+    document.getElementById("spear-point-day6-7").textContent =
+        formatPoint(minutes * 200);
+
+
+    const pointPerSoldier =
+        fromTier === toTier
+            ? trainingPointValues[toTier]
+            : trainingPointValues[toTier] -
+              trainingPointValues[fromTier];
+
+
+    document.getElementById("training-point").textContent =
+        formatPoint(count * pointPerSoldier);
+}
+
+
+// ---------- 逆算入力 ----------
+
+const targetPointInput =
+    document.getElementById("target-point");
+
+
+targetPointInput.addEventListener("input", function () {
+
+    const raw =
+        this.value.replace(/[^0-9]/g, "");
+
+    this.value =
+        raw
+            ? Number(raw).toLocaleString()
+            : "";
+});
+
+
+function getTargetPoint() {
+
+    return Number(
+        targetPointInput.value.replace(/,/g, "")
+    );
+}
+
+
+function updateDayDescription() {
+
+    const day =
+        document.getElementById("tc-day").value;
+
+    const box =
+        document.getElementById("tc-day-description");
+
+
+    if (day === "1") {
+
+        box.innerHTML =
+            "1日目：スピードアップのテーマ（1分につき250Pt獲得）";
+
+    } else if (day === "3") {
+
+        box.innerHTML =
+            "3日目：訓練のテーマ（育成兵士のTier × 人数でPt獲得）";
+
+    } else {
+
+        box.innerHTML =
+            "6～7日目：オールスターのテーマ（1分につき200Pt獲得）";
+    }
+
+
+    updateInventoryInputs();
+}
+
+
+// ---------- 3日目の所持数欄 ----------
+
+function updateInventoryInputs() {
+
+    const day =
+        document.getElementById("tc-day").value;
+
+    const section =
+        document.getElementById("soldier-inventory-section");
+
+    const container =
+        document.getElementById("inventory-inputs");
+
+
+    if (day !== "3") {
+
+        section.classList.add("hidden");
+
+        container.innerHTML = "";
+
+        return;
+    }
+
+
+    section.classList.remove("hidden");
+
+
+    const unlocked =
+        Number(
+            document.getElementById("unlocked-tier").value
+        );
+
+
+    container.innerHTML = "";
 
 
     /*
-      レアリティ
+        T6解放 → T5・T4・T3
+        T5解放 → T4・T3
+        T4解放 → T3
     */
-    if (
-      state.rarity !== "all" &&
-      item.rarity !== state.rarity
+
+    for (
+        let tier = unlocked - 1;
+        tier >= 3;
+        tier--
     ) {
-      return false;
+
+        const row =
+            document.createElement("div");
+
+        row.className =
+            "inventory-row";
+
+
+        const label =
+            document.createElement("label");
+
+        label.textContent =
+            `T${tier}`;
+
+
+        const input =
+            document.createElement("input");
+
+        input.type =
+            "number";
+
+        input.min =
+            "0";
+
+        input.value =
+            "0";
+
+        input.id =
+            `inventory-t${tier}`;
+
+
+        row.appendChild(label);
+
+        row.appendChild(input);
+
+        container.appendChild(row);
     }
-
-
-    /*
-      カテゴリ
-    */
-    if (
-      state.category !== "all" &&
-      !item.categories.includes(state.category)
-    ) {
-      return false;
-    }
-
-
-    /*
-      おすすめ度
-    */
-    const level = item.recommend[state.tier];
-
-    if (!matchesRecommendation(level)) {
-      return false;
-    }
-
-
-    /*
-      キーワード検索
-    */
-    if (state.keyword) {
-      const text = [
-        item.mission,
-        item.rarity,
-        ...item.categories
-      ]
-        .join(" ")
-        .toLowerCase();
-
-      if (!text.includes(state.keyword.toLowerCase())) {
-        return false;
-      }
-    }
-
-
-    return true;
-  });
 }
 
 
-function render() {
-  const tbody =
-    document.getElementById("missionTableBody");
+// ---------- 1日目 ----------
 
-  const resultCount =
-    document.getElementById("resultCount");
+function calculateDay1(target, speed, tier) {
 
-  const currentConditions =
-    document.getElementById("currentConditions");
-
-  const notice =
-    document.getElementById("notice");
+    const maxCount =
+        66000;
 
 
-  /*
-    データが空の場合
-  */
-  if (!missionData[state.rank] || missionData[state.rank].length === 0) {
-    tbody.innerHTML = "";
-
-    resultCount.textContent = "該当：0件";
-
-    currentConditions.textContent =
-      rankNames[state.rank];
-
-    notice.textContent =
-      "このランクのミッションデータは準備中です。";
-
-    notice.classList.remove("hidden");
-
-    return;
-  }
+    const fullSeconds =
+        calculateTrainingSeconds(
+            speed,
+            tier,
+            tier,
+            maxCount
+        );
 
 
-  notice.classList.add("hidden");
+    /*
+        3日目のために
+        騎兵・射撃・歩兵
+        各2日分
+        合計6日分を温存
+    */
+
+    const reserveSeconds =
+        6 * 86400;
 
 
-  const filtered = getFilteredMissions();
+    const usableSeconds =
+        Math.max(
+            0,
+            fullSeconds - reserveSeconds
+        );
 
 
-  /*
-    件数
-  */
-  resultCount.textContent =
-    `該当：${filtered.length}件`;
+    const maxPoint =
+        spearMinutes(usableSeconds) * 250;
 
 
-  /*
-    現在の条件表示
-  */
-  const conditionParts = [
-    rankNames[state.rank],
-    `${missionTypeNames[state.missionType]}ミッション`,
-    state.tier.toUpperCase()
-  ];
+    /*
+        66,000人以内で
+        目標達成できる場合
+    */
+
+    if (target <= maxPoint) {
+
+        const requiredUsableMinutes =
+            Math.ceil(target / 250);
 
 
-  if (state.rarity !== "all") {
-    conditionParts.push(state.rarity);
-  }
+        const requiredTotalSeconds =
+            requiredUsableMinutes * 60 +
+            reserveSeconds;
 
 
-  if (state.category !== "all") {
-    conditionParts.push(state.category);
-  }
+        const secondsPerSoldier =
+            fullSeconds / maxCount;
 
 
-  currentConditions.textContent =
-    conditionParts.join(" / ");
-
-
-  /*
-    該当ミッションなし
-  */
-  if (filtered.length === 0) {
-    tbody.innerHTML = `
-      <tr class="empty-row">
-        <td colspan="5">
-          条件に一致するミッションがありません。
-        </td>
-      </tr>
-    `;
-
-    return;
-  }
-
-
-  /*
-    ミッション表示
-  */
-  tbody.innerHTML = filtered
-    .map(item => {
-      const point =
-        state.missionType === "public"
-          ? item.publicPoint
-          : item.personalPoint;
-
-      const recommendation =
-        item.recommend[state.tier];
-
-      const rarityClass =
-        getRarityClass(item.rarity);
-
-
-      return `
-        <tr>
-
-          <td class="recommend">
-            ${stars(recommendation)}
-          </td>
-
-
-          <td class="mission-cell">
-            ${item.mission}
-          </td>
-
-
-          <td class="point-col">
-            ${point.toLocaleString()}
-          </td>
-
-
-          <td class="rarity-cell ${rarityClass}">
-            <span class="rarity">
-              ${item.rarity}
-            </span>
-          </td>
-
-
-          <td class="category-cell">
-            <div class="tags">
-              ${item.categories
-                .map(
-                  category =>
-                    `<span class="tag">${category}</span>`
+        const count =
+            Math.min(
+                maxCount,
+                Math.ceil(
+                    requiredTotalSeconds /
+                    secondsPerSoldier
                 )
-                .join("")}
-            </div>
-          </td>
+            );
 
-        </tr>
-      `;
-    })
-    .join("");
+
+        const actualFullSeconds =
+            calculateTrainingSeconds(
+                speed,
+                tier,
+                tier,
+                count
+            );
+
+
+        const actualUsableSeconds =
+            Math.max(
+                0,
+                actualFullSeconds -
+                reserveSeconds
+            );
+
+
+        const actualPoint =
+            spearMinutes(actualUsableSeconds) *
+            250;
+
+
+        return {
+
+            withinLimit: true,
+
+            tier,
+
+            count,
+
+            fullSeconds:
+                actualFullSeconds,
+
+            usableSeconds:
+                actualUsableSeconds,
+
+            point:
+                actualPoint,
+
+            remaining:
+                0,
+
+            lower:
+                null
+        };
+    }
+
+
+    /*
+        66,000人すべて育成しても
+        足りない場合
+    */
+
+    const remaining =
+        target - maxPoint;
+
+
+    const lowerTier =
+        tier - 1;
+
+
+    let lower =
+        null;
+
+
+    if (lowerTier >= 3) {
+
+        const secondsPerSoldier =
+            calculateTrainingSeconds(
+                speed,
+                lowerTier,
+                lowerTier,
+                1
+            );
+
+
+        const requiredMinutes =
+            Math.ceil(
+                remaining / 250
+            );
+
+
+        const count =
+            Math.ceil(
+                (requiredMinutes * 60) /
+                secondsPerSoldier
+            );
+
+
+        const seconds =
+            calculateTrainingSeconds(
+                speed,
+                lowerTier,
+                lowerTier,
+                count
+            );
+
+
+        lower = {
+
+            tier:
+                lowerTier,
+
+            count,
+
+            seconds,
+
+            point:
+                spearMinutes(seconds) * 250
+        };
+    }
+
+
+    return {
+
+        withinLimit:
+            false,
+
+        tier,
+
+        count:
+            maxCount,
+
+        fullSeconds,
+
+        usableSeconds,
+
+        point:
+            maxPoint,
+
+        remaining,
+
+        lower
+    };
 }
 
 
-/*
-  =========================
-  ランク
-  =========================
-*/
-document
-  .getElementById("rankButtons")
-  .addEventListener("click", event => {
-    const button =
-      event.target.closest("[data-rank]");
+// ---------- 6～7日目 ----------
 
-    if (!button) {
-      return;
+function calculateDay67(target, speed, tier) {
+
+    const minutes =
+        Math.ceil(
+            target / 200
+        );
+
+
+    const requiredSeconds =
+        minutes * 60;
+
+
+    const secondsPerSoldier =
+        calculateTrainingSeconds(
+            speed,
+            tier,
+            tier,
+            1
+        );
+
+
+    const count =
+        Math.ceil(
+            requiredSeconds /
+            secondsPerSoldier
+        );
+
+
+    const seconds =
+        calculateTrainingSeconds(
+            speed,
+            tier,
+            tier,
+            count
+        );
+
+
+    return {
+
+        tier,
+
+        count,
+
+        seconds,
+
+        point:
+            spearMinutes(seconds) * 200
+    };
+}
+
+
+// ---------- 3日目 ----------
+
+function getInventory(tier) {
+
+    const input =
+        document.getElementById(
+            `inventory-t${tier}`
+        );
+
+
+    return input
+        ? Number(input.value)
+        : 0;
+}
+
+
+function calculateDay3(target, speed, unlocked) {
+
+    let upgradePoint = 0;
+    let upgradeSeconds = 0;
+
+    const upgrades = [];
+
+
+    /*
+        所持している低Tier兵士だけを
+        アップグレード対象にする
+    */
+
+    for (
+        let tier = unlocked - 1;
+        tier >= 3;
+        tier--
+    ) {
+
+        const count =
+            getInventory(tier);
+
+
+        // 0人なら対象外
+        if (count <= 0) {
+            continue;
+        }
+
+
+        // 1人あたりの獲得ポイント
+        const perSoldier =
+            trainingPointValues[unlocked] -
+            trainingPointValues[tier];
+
+
+        // 獲得ポイント
+        const point =
+            count * perSoldier;
+
+
+        // アップグレードに必要な訓練時間
+        const seconds =
+            calculateTrainingSeconds(
+                speed,
+                tier,
+                unlocked,
+                count
+            );
+
+
+        upgradePoint += point;
+        upgradeSeconds += seconds;
+
+
+        upgrades.push({
+
+            from:
+                tier,
+
+            to:
+                unlocked,
+
+            count,
+
+            point,
+
+            seconds
+        });
     }
 
-    state.rank =
-      button.dataset.rank;
 
-    setActiveButton(
-      "rankButtons",
-      "data-rank",
-      state.rank
-    );
-
-    render();
-  });
+    const remaining =
+        Math.max(
+            0,
+            target - upgradePoint
+        );
 
 
-/*
-  =========================
-  公共 / 個人
-  =========================
-*/
-document
-  .getElementById("missionTypeButtons")
-  .addEventListener("click", event => {
-    const button =
-      event.target.closest("[data-type]");
+    let training =
+        null;
 
-    if (!button) {
-      return;
+
+    /*
+        アップグレードだけで
+        ポイントが足りない場合
+    */
+
+    if (remaining > 0) {
+
+        const perSoldier =
+            trainingPointValues[unlocked];
+
+
+        const count =
+            Math.ceil(
+                remaining /
+                perSoldier
+            );
+
+
+        const point =
+            count *
+            perSoldier;
+
+
+        // 新規育成に必要な訓練時間
+        const seconds =
+            calculateTrainingSeconds(
+                speed,
+                unlocked,
+                unlocked,
+                count
+            );
+
+
+        training = {
+
+            tier:
+                unlocked,
+
+            count,
+
+            point,
+
+            seconds
+        };
     }
 
-    state.missionType =
-      button.dataset.type;
 
-    setActiveButton(
-      "missionTypeButtons",
-      "data-type",
-      state.missionType
-    );
-
-    render();
-  });
+    // 必要訓練時間の合計
+    const totalSeconds =
+        upgradeSeconds +
+        (
+            training
+                ? training.seconds
+                : 0
+        );
 
 
-/*
-  =========================
-  Tier
-  =========================
-*/
-document
-  .getElementById("tierButtons")
-  .addEventListener("click", event => {
-    const button =
-      event.target.closest("[data-tier]");
+    return {
 
-    if (!button) {
-      return;
+        upgrades,
+
+        upgradePoint,
+
+        upgradeSeconds,
+
+        remaining,
+
+        training,
+
+        totalSeconds
+    };
+}
+
+
+// ---------- 結果表示 ----------
+
+function step(number, text, note = "") {
+
+    return `
+
+        <div class="action-step">
+
+            <div class="step-number">
+                ${number}
+            </div>
+
+            <div class="step-text">
+                ${text}
+            </div>
+
+        </div>
+
+        ${
+            note
+                ? `
+                    <div class="action-note">
+                        ${note}
+                    </div>
+                  `
+                : ""
+        }
+
+    `;
+}
+
+
+function showResult(
+    action,
+    points,
+    details,
+    conditions
+) {
+
+    document.getElementById(
+        "action-content"
+    ).innerHTML =
+        action;
+
+
+    document.getElementById(
+        "point-content"
+    ).innerHTML =
+        points;
+
+
+    document.getElementById(
+        "detail-content"
+    ).innerHTML =
+        details;
+
+
+    document.getElementById(
+        "condition-content"
+    ).innerHTML =
+        conditions;
+
+
+    document.getElementById(
+        "reverse-result"
+    ).classList.remove("hidden");
+}
+
+
+// ---------- 逆算本体 ----------
+
+function calculateReverse() {
+
+    const target =
+        getTargetPoint();
+
+
+    const day =
+        document.getElementById(
+            "tc-day"
+        ).value;
+
+
+    const speed =
+        Number(
+            document.getElementById(
+                "reverse-training-speed"
+            ).value
+        );
+
+
+    const tier =
+        Number(
+            document.getElementById(
+                "unlocked-tier"
+            ).value
+        );
+
+
+    if (!target || target <= 0) {
+
+        alert(
+            "欲しいポイント数を入力してください。"
+        );
+
+        return;
     }
 
-    state.tier =
-      button.dataset.tier;
 
-    setActiveButton(
-      "tierButtons",
-      "data-tier",
-      state.tier
-    );
+    // =========================
+    // 1日目
+    // =========================
 
-    render();
-  });
+    if (day === "1") {
+
+        const r =
+            calculateDay1(
+                target,
+                speed,
+                tier
+            );
 
 
-/*
-  =========================
-  レアリティ
-  =========================
-*/
-document
-  .getElementById("rarityButtons")
-  .addEventListener("click", event => {
-    const button =
-      event.target.closest("[data-rarity]");
+        let action =
+            "";
 
-    if (!button) {
-      return;
+
+        let details =
+            "";
+
+
+        if (r.withinLimit) {
+
+            action =
+
+                step(
+                    1,
+                    `T${r.tier}を${formatPeople(r.count)}育成する。`
+                )
+
+                +
+
+                `
+                <div class="action-note">
+                    3日目のために、騎兵・射撃・歩兵の各2日分（計6日）のスピードアップを残して計算しています。
+                </div>
+                `;
+
+        } else {
+
+            if (r.lower) {
+
+                action =
+
+                    step(
+                        1,
+                        `T${r.lower.tier}を${formatPeople(r.lower.count)}育成する。`
+                    )
+
+                    +
+
+                    step(
+                        2,
+                        `騎兵・射撃・歩兵をそれぞれ22,000人ずつT${r.tier}の訓練を開始し、それぞれ残り2日で訓練終了となるように、スピードアップを使用してください。`,
+                        "※3日目でポイントを得るためにスピードアップを温存します。"
+                    );
+
+            } else {
+
+                action =
+
+                    step(
+                        1,
+                        `T${r.tier}を${formatPeople(r.count)}育成する。`
+                    );
+            }
+        }
+
+
+        details = `
+
+            <div class="detail-row">
+                <span>T${r.tier}育成</span>
+                <strong>
+                    ${formatPeople(r.count)}
+                </strong>
+            </div>
+
+            <div class="detail-row">
+                <span>総訓練時間</span>
+                <strong>
+                    ${formatTrainingTime(r.fullSeconds)}
+                </strong>
+            </div>
+
+            <div class="detail-row">
+                <span>使用するスピードアップ</span>
+                <strong>
+                    ${formatTrainingTime(r.usableSeconds)}
+                </strong>
+            </div>
+
+            <div class="detail-row">
+                <span>T${r.tier}で獲得</span>
+                <strong>
+                    ${formatPoint(r.point)}
+                </strong>
+            </div>
+
+            <div class="detail-row">
+                <span>残り必要ポイント</span>
+                <strong>
+                    ${formatPoint(r.remaining)}
+                </strong>
+            </div>
+
+            ${
+                r.lower
+                    ? `
+
+                        <div class="detail-row">
+                            <span>
+                                T${r.lower.tier}育成
+                            </span>
+
+                            <strong>
+                                ${formatPeople(r.lower.count)}
+                            </strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>
+                                T${r.lower.tier}訓練時間
+                            </span>
+
+                            <strong>
+                                ${formatTrainingTime(
+                                    r.lower.seconds
+                                )}
+                            </strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>
+                                T${r.lower.tier}で獲得
+                            </span>
+
+                            <strong>
+                                ${formatPoint(
+                                    r.lower.point
+                                )}
+                            </strong>
+                        </div>
+
+                      `
+                    : ""
+            }
+
+        `;
+
+
+        const actualPoint =
+            r.point +
+            (
+                r.lower
+                    ? r.lower.point
+                    : 0
+            );
+
+
+        showResult(
+
+            action,
+
+            `
+                <div class="point-value">
+                    ${formatPoint(actualPoint)}
+                </div>
+            `,
+
+            details,
+
+            `
+                <ul class="condition-list">
+
+                    <li>
+                        訓練速度：${speed}%
+                    </li>
+
+                    <li>
+                        T${tier}は最大66,000人まで計算
+                    </li>
+
+                    <li>
+                        1日目：1分につき250Pt
+                    </li>
+
+                    <li>
+                        3日目のために6日分のスピードアップを温存
+                    </li>
+
+                </ul>
+            `
+        );
+
+
+        return;
     }
 
-    state.rarity =
-      button.dataset.rarity;
 
-    setActiveButton(
-      "rarityButtons",
-      "data-rarity",
-      state.rarity
-    );
+    // =========================
+    // 6～7日目
+    // =========================
 
-    render();
-  });
+    if (day === "6-7") {
+
+        const r =
+            calculateDay67(
+                target,
+                speed,
+                tier
+            );
 
 
-/*
-  =========================
-  カテゴリ
-  =========================
-*/
-document
-  .getElementById("categoryButtons")
-  .addEventListener("click", event => {
-    const button =
-      event.target.closest("[data-category]");
+        showResult(
 
-    if (!button) {
-      return;
+            step(
+                1,
+                `T${r.tier}を${formatPeople(r.count)}育成する。`
+            ),
+
+            `
+                <div class="point-value">
+                    ${formatPoint(r.point)}
+                </div>
+            `,
+
+            `
+
+                <div class="detail-row">
+                    <span>育成Tier</span>
+
+                    <strong>
+                        T${r.tier}
+                    </strong>
+                </div>
+
+
+                <div class="detail-row">
+                    <span>必要育成人数</span>
+
+                    <strong>
+                        ${formatPeople(r.count)}
+                    </strong>
+                </div>
+
+
+                <div class="detail-row">
+                    <span>訓練時間</span>
+
+                    <strong>
+                        ${formatTrainingTime(r.seconds)}
+                    </strong>
+                </div>
+
+
+                <div class="detail-row">
+                    <span>獲得スピアポイント</span>
+
+                    <strong>
+                        ${formatPoint(r.point)}
+                    </strong>
+                </div>
+
+
+                <div class="result-message">
+                    6～7日目は1分につき200Ptとして計算しています。
+                </div>
+
+            `,
+
+            `
+
+                <ul class="condition-list">
+
+                    <li>
+                        訓練速度：${speed}%
+                    </li>
+
+                    <li>
+                        育成Tier：T${tier}
+                    </li>
+
+                    <li>
+                        1分につき200Pt
+                    </li>
+
+                </ul>
+
+            `
+        );
+
+
+        return;
     }
 
-    state.category =
-      button.dataset.category;
 
-    setActiveButton(
-      "categoryButtons",
-      "data-category",
-      state.category
-    );
+    // =========================
+    // 3日目
+    // =========================
 
-    render();
-  });
+    if (day === "3") {
+
+        const r =
+            calculateDay3(
+                target,
+                speed,
+                tier
+            );
 
 
-/*
-  =========================
-  おすすめ度
-  =========================
-*/
-document
-  .getElementById("recommendButtons")
-  .addEventListener("click", event => {
-    const button =
-      event.target.closest("[data-recommend]");
+        let action =
+            "";
 
-    if (!button) {
-      return;
+
+        let number =
+            1;
+
+
+        /*
+            アップグレード対象がある場合だけ
+            「アップグレードしてください」
+            を表示
+        */
+
+        if (r.upgrades.length > 0) {
+
+            action +=
+
+                step(
+                    number++,
+                    `現在の兵士をT${tier}までアップグレードする。`
+                );
+        }
+
+
+        /*
+            不足ポイントがある場合だけ
+            育成ステップを表示
+        */
+
+        if (r.training) {
+
+            action +=
+
+                step(
+                    number,
+                    `T${r.training.tier}を${formatPeople(r.training.count)}育成する。`
+                );
+        }
+
+
+        /*
+            アップグレードだけで
+            目標達成できた場合
+        */
+
+        if (!action) {
+
+            action =
+
+                `
+                <div class="result-message">
+                    現在の兵士のアップグレードだけで、目標ポイントを獲得できます。
+                </div>
+                `;
+        }
+
+
+        let details =
+            "";
+
+
+        r.upgrades.forEach(
+            item => {
+
+                details += `
+
+                    <div class="detail-row">
+
+                        <span>
+                            T${item.from}
+                            →
+                            T${item.to}
+                            アップグレード
+                        </span>
+
+                        <strong>
+                            ${formatPeople(item.count)}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-row">
+
+                        <span>
+                            訓練時間
+                        </span>
+
+                        <strong>
+                            ${formatTrainingTime(item.seconds)}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-row">
+
+                        <span>
+                            獲得ポイント
+                        </span>
+
+                        <strong>
+                            ${formatPoint(item.point)}
+                        </strong>
+
+                    </div>
+
+                `;
+            }
+        );
+
+
+        details += `
+
+            <div class="detail-row">
+
+                <span>
+                    アップグレード合計
+                </span>
+
+                <strong>
+                    ${formatPoint(
+                        r.upgradePoint
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span>
+                    残り必要ポイント
+                </span>
+
+                <strong>
+                    ${formatPoint(
+                        r.remaining
+                    )}
+                </strong>
+
+            </div>
+
+        `;
+
+
+        if (r.training) {
+
+            details += `
+
+                <div class="detail-row">
+
+                    <span>
+                        追加育成Tier
+                    </span>
+
+                    <strong>
+                        T${r.training.tier}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    <span>
+                        追加育成人数
+                    </span>
+
+                    <strong>
+                        ${formatPeople(
+                            r.training.count
+                        )}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    <span>
+                        訓練時間
+                    </span>
+
+                    <strong>
+                        ${formatTrainingTime(
+                            r.training.seconds
+                        )}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    <span>
+                        追加育成ポイント
+                    </span>
+
+                    <strong>
+                        ${formatPoint(
+                            r.training.point
+                        )}
+                    </strong>
+
+                </div>
+
+            `;
+        }
+
+
+        /*
+        details += `
+
+            <div class="detail-row">
+
+                <span>
+                    必要訓練時間合計
+                </span>
+
+                <strong>
+                    ${formatTrainingTime(
+                        r.totalSeconds
+                    )}
+                </strong>
+
+            </div>
+
+        `;
+        */
+
+
+        const actualPoint =
+            r.upgradePoint +
+            (
+                r.training
+                    ? r.training.point
+                    : 0
+            );
+
+
+        showResult(
+
+            action,
+
+            `
+                <div class="point-value">
+                    ${formatPoint(actualPoint)}
+                </div>
+            `,
+
+            details,
+
+            `
+
+                <ul class="condition-list">
+
+                    <li>
+                        解放Tier：T${tier}
+                    </li>
+
+                    <li>
+                        低Tier兵士を解放Tierまでアップグレード
+                    </li>
+
+                    <li>
+                        不足分はT${tier}育成で補完
+                    </li>
+
+                    <li>
+                        訓練ポイント：
+                        T3=20 / T4=40 / T5=80 / T6=150
+                    </li>
+
+                </ul>
+
+            `
+        );
     }
+}
 
-    state.recommend =
-      button.dataset.recommend;
 
-    setActiveButton(
-      "recommendButtons",
-      "data-recommend",
-      state.recommend
+// ---------- モード切替 ----------
+
+document
+    .getElementById("normal-mode-button")
+    .addEventListener(
+        "click",
+        () => {
+
+            document
+                .getElementById("normal-section")
+                .classList
+                .remove("hidden");
+
+
+            document
+                .getElementById("reverse-section")
+                .classList
+                .add("hidden");
+
+
+            document
+                .getElementById("normal-mode-button")
+                .classList
+                .add("active");
+
+
+            document
+                .getElementById("reverse-mode-button")
+                .classList
+                .remove("active");
+        }
     );
 
-    render();
-  });
 
-
-/*
-  =========================
-  キーワード検索
-  =========================
-*/
 document
-  .getElementById("keyword")
-  .addEventListener("input", event => {
-    state.keyword =
-      event.target.value.trim();
+    .getElementById("reverse-mode-button")
+    .addEventListener(
+        "click",
+        () => {
 
-    render();
-  });
+            document
+                .getElementById("normal-section")
+                .classList
+                .add("hidden");
 
 
-/*
-  初回表示
-*/
-render();
+            document
+                .getElementById("reverse-section")
+                .classList
+                .remove("hidden");
+
+
+            document
+                .getElementById("normal-mode-button")
+                .classList
+                .remove("active");
+
+
+            document
+                .getElementById("reverse-mode-button")
+                .classList
+                .add("active");
+
+
+            updateDayDescription();
+        }
+    );
+
+
+document
+    .getElementById("calculate-button")
+    .addEventListener(
+        "click",
+        calculateNormal
+    );
+
+
+document
+    .getElementById("tc-day")
+    .addEventListener(
+        "change",
+        updateDayDescription
+    );
+
+
+document
+    .getElementById("unlocked-tier")
+    .addEventListener(
+        "change",
+        updateInventoryInputs
+    );
+
+
+document
+    .getElementById("reverse-calculate-button")
+    .addEventListener(
+        "click",
+        calculateReverse
+    );
+
+
+updateDayDescription();
