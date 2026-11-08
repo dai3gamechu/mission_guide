@@ -1,39 +1,135 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>TC計算ツール | DLS TOOL HUB</title>
-<script>try{document.documentElement.dataset.dlsInitialTheme=localStorage.getItem('dls-theme-v1')==='light'?'light':'dark'}catch(e){document.documentElement.dataset.dlsInitialTheme='dark'}</script>
-<link rel="stylesheet" href="style.css?v=1.0-hub1">
-<link rel="stylesheet" href="https://dai3gamechu.github.io/dls_tool_hub/shared/header.css"></head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>同盟リーグミッション一覧 | DLS TOOL HUB</title>
+  <script>try{document.documentElement.dataset.dlsInitialTheme=localStorage.getItem('dls-theme-v1')==='light'?'light':'dark'}catch(e){document.documentElement.dataset.dlsInitialTheme='dark'}</script>
+  <link rel="stylesheet" href="style.css?v=1.0-hub1">
+  <link rel="stylesheet" href="https://dai3gamechu.github.io/dls_tool_hub/shared/header.css">
+</head>
 <body>
-<script>document.body.dataset.theme=document.documentElement.dataset.dlsInitialTheme||'dark';</script>
-<div id="dls-global-header" data-tool="tc"></div>
-<main class="tc-app"><div class="container">
-<header class="tc-page-header">
-  <div class="tc-heading-row">
-    <div class="tc-heading-text"><h1>TC計算ツール</h1><p class="tc-version">Ver.1.0</p></div>
-    <a class="tc-video-link" href="https://www.youtube.com/watch?v=aMb4ISyZ9No" target="_blank" rel="noopener noreferrer" aria-label="TC計算ツールの使い方動画をYouTubeで開く（新しいタブ）"><span aria-hidden="true">▶</span> 使い方動画 <span aria-hidden="true">↗</span></a>
+  <script>document.body.dataset.theme=document.documentElement.dataset.dlsInitialTheme||'dark';</script>
+  <div id="dls-global-header" data-tool="mission"></div>
+  <main class="mission-app">
+  <div class="container">
+    <header class="mission-page-header">
+      <div class="mission-heading-row">
+        <div class="mission-heading-text">
+          <h1>同盟リーグミッション一覧</h1>
+          <p class="mission-version">Ver.1.0</p>
+        </div>
+        <a class="mission-video-link" href="https://www.youtube.com/watch?v=baJpHj282sA" target="_blank" rel="noopener noreferrer" aria-label="同盟リーグミッション一覧の使い方動画をYouTubeで開く（新しいタブ）"><span aria-hidden="true">▶</span> 使い方動画 <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="mission-description">トップファイター／スーパーエースのミッションを、ランク・カテゴリー・おすすめ度などで絞り込めます。</p>
+    </header>
+
+    <section class="panel controls">
+      <div class="control-group">
+        <div class="control-label">ランク</div>
+        <div class="segmented" id="rankButtons">
+          <button class="filter-btn active" data-rank="topFighter">トップファイター</button>
+          <button class="filter-btn" data-rank="superAce">スーパーエース</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">ミッション種別</div>
+        <div class="segmented" id="missionTypeButtons">
+          <button class="filter-btn active" data-type="public">公共</button>
+          <button class="filter-btn" data-type="personal">個人</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">最高解放Tier</div>
+        <div class="segmented" id="tierButtons">
+          <button class="filter-btn" data-tier="t4">T4</button>
+          <button class="filter-btn" data-tier="t5">T5</button>
+          <button class="filter-btn active" data-tier="t6">T6</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">レアリティ</div>
+        <div class="chip-list" id="rarityButtons">
+          <button class="chip active" data-rarity="all">すべて</button>
+          <button class="chip" data-rarity="アンコモン">アンコモン</button>
+          <button class="chip" data-rarity="エリート">エリート</button>
+          <button class="chip" data-rarity="レジェンド">レジェンド</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">カテゴリ</div>
+        <div class="chip-list" id="categoryButtons">
+          <button class="chip active" data-category="all">すべて</button>
+          <button class="chip" data-category="課金">課金</button>
+          <button class="chip" data-category="アイテム消費">アイテム消費</button>
+          <button class="chip" data-category="スタミナ">スタミナ</button>
+          <button class="chip" data-category="戦闘">戦闘</button>
+          <button class="chip" data-category="訓練">訓練</button>
+          <button class="chip" data-category="建築・研究">建築・研究</button>
+          <button class="chip" data-category="装備・乗り物系">装備・乗り物系</button>
+          <button class="chip" data-category="採取">採取</button>
+          <button class="chip" data-category="同盟">同盟</button>
+          <button class="chip" data-category="その他">その他</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">おすすめ度</div>
+        <div class="chip-list" id="recommendButtons">
+          <button class="chip active" data-recommend="all">すべて</button>
+          <button class="chip" data-recommend="3">★★★</button>
+          <button class="chip" data-recommend="2plus">★★以上</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="keyword">キーワード検索</label>
+        <input id="keyword" class="search-input" type="search" placeholder="例：スタミナ、兵士、採取">
+      </div>
+    </section>
+
+    <section class="legend">
+      <strong>おすすめ度</strong>
+      <span>★★★：積極的におすすめ</span>
+      <span>★★☆：状況次第でおすすめ</span>
+      <span>★☆☆：優先度低め</span>
+    </section>
+    
+    <section class="summary-row">
+      <div id="currentConditions"></div>
+      <div id="resultCount"></div>
+    </section>
+
+    <section id="notice" class="notice hidden"></section>
+
+    <section class="panel table-panel">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="recommend-col">おすすめ</th>
+              <th class="mission-col">ミッション内容</th>
+              <th class="point-col">Pt</th>
+              <th class="rarity-col">レアリティ</th>
+              <th class="category-col">カテゴリ</th>
+            </tr>
+          </thead>
+
+          <tbody id="missionTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <div class="mission-version-footer">同盟リーグミッション一覧 Ver.1.0</div>
   </div>
-  <p class="tc-description">兵士の訓練時間・獲得ポイントを計算。目標ポイントから必要な育成人数も逆算できます。</p>
-</header>
-<div class="mode-switch"><button id="normal-mode-button" class="mode-button active">通常計算</button><button id="reverse-mode-button" class="mode-button">ポイント逆算</button></div>
-<section id="normal-section"><h2>通常計算</h2>
-<label for="training-type">育成する兵士のTier</label><select id="training-type"><option value="6-6">T6</option><option value="5-5">T5</option><option value="4-4">T4</option><option value="3-3">T3</option><option value="5-6">T5 → T6</option><option value="4-6">T4 → T6</option><option value="3-6">T3 → T6</option><option value="4-5">T4 → T5</option><option value="3-5">T3 → T5</option></select>
-<label for="training-speed">訓練速度</label><div class="input-with-unit"><input type="number" id="training-speed" value="94.4" step="0.1"><span>%</span></div>
-<label for="soldier-count">育成人数</label><input type="number" id="soldier-count" value="2000" min="1"><button id="calculate-button" class="calculate-button">計算する</button>
-<div class="result-section"><h2>計算結果</h2><div class="result-item"><span>訓練時間</span><strong id="training-time">---</strong></div><div class="result-item spear-result"><span>スピアポイント</span><div class="spear-points"><div><span>TC初日</span><strong id="spear-point-day1">---</strong></div><div><span>TC6-7日目</span><strong id="spear-point-day6-7">---</strong></div></div></div><div class="result-item"><span>訓練ポイント</span><strong id="training-point">---</strong></div></div>
-</section>
-<section id="reverse-section" class="hidden"><h2>ポイント逆算</h2>
-<label for="target-point">欲しいポイント数</label><div class="input-with-unit"><input type="text" id="target-point" inputmode="numeric" placeholder="例：60,000,000"><span>Pt</span></div>
-<label for="tc-day">現在TC何日目ですか？</label><select id="tc-day"><option value="1">1日目</option><option value="3">3日目</option><option value="6-7">6～7日目</option></select><div id="tc-day-description" class="day-description"></div>
-<label for="reverse-training-speed">訓練速度</label><div class="input-with-unit"><input type="number" id="reverse-training-speed" value="82.8" step="0.1"><span>%</span></div>
-<label for="unlocked-tier">解放している兵士のTier</label><select id="unlocked-tier"><option value="4">T4</option><option value="5">T5</option><option value="6" selected>T6</option></select>
-<div id="soldier-inventory-section" class="hidden"><h3>現在の兵士所持数</h3><p class="input-note">解放しているTierより1段階低い兵士から入力してください。</p><div id="inventory-inputs"></div></div>
-<button id="reverse-calculate-button" class="calculate-button">計算する</button>
-<div id="reverse-result" class="hidden"><div class="action-section"><h2>やること</h2><div id="action-content"></div></div><div class="point-section"><h2>獲得ポイント</h2><div id="point-content"></div></div><div class="detail-section"><h2>詳細な計算結果</h2><div id="detail-content"></div></div><div class="condition-section"><h3>計算条件</h3><div id="condition-content"></div></div></div>
-</section>
-<div class="tc-version-footer">TC計算ツール Ver.1.0</div>
-</div></main>
-<footer id="dls-global-footer">DLS TOOL HUB | だい3ゲームch · 非公式ファンツール</footer>
-<script src="script.js?v=1.0-hub1"></script>
-<script src="https://dai3gamechu.github.io/dls_tool_hub/shared/header.js"></script>
-</body></html>
+  </main>
+  <footer id="dls-global-footer">DLS TOOL HUB | だい3ゲームch · 非公式ファンツール</footer>
+  <script src="script.js?v=1.0-hub1"></script>
+  <script src="https://dai3gamechu.github.io/dls_tool_hub/shared/header.js"></script>
+</body>
+</html>
